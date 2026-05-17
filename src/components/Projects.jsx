@@ -53,7 +53,7 @@ const projects = {
       desc: "Comprehensive LMS with role-based access, course management, grade tracking, and responsive dashboards.",
       tech: ["React.js", "Redux", "Node.js", "PostgreSQL", "Express.js"],
       github: "https://github.com/umerabdullah1818-oss/Learning-Managment-System",
-      live: "https://learning-managment-system-g41p-ogj0ua4no.vercel.app/",
+      live: "https://learning-managment-system-g41p.vercel.app/",
       img: "/projects/lms.png",
     },
   ],
@@ -126,26 +126,26 @@ const ProjectImageCarousel = ({ images, img, name }) => {
     <div className="relative h-[220px] md:h-[400px] overflow-hidden group/carousel bg-[#1a1a1a]">
       <img src={images[currentIndex]} alt={`${name} - ${currentIndex + 1}`} className="w-full h-full object-cover object-top transition-transform duration-500" loading="lazy" />
       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(31,31,31,0.9)] via-transparent to-transparent opacity-80"></div>
-      
+
       {/* Controls */}
-      <button 
+      <button
         onClick={(e) => { e.stopPropagation(); setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1)); }}
         className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/70 opacity-0 group-hover/carousel:opacity-100 hover:bg-accent/20 hover:text-accent transition-all"
       >
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
       </button>
-      <button 
+      <button
         onClick={(e) => { e.stopPropagation(); setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1)); }}
         className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/70 opacity-0 group-hover/carousel:opacity-100 hover:bg-accent/20 hover:text-accent transition-all"
       >
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
       </button>
 
       {/* Dots */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
         {images.map((_, i) => (
-          <button 
-            key={i} 
+          <button
+            key={i}
             onClick={(e) => { e.stopPropagation(); setCurrentIndex(i); }}
             className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentIndex ? "bg-accent w-3" : "bg-white/30 hover:bg-white/60"}`}
           />
@@ -219,7 +219,7 @@ export default function Projects() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={() => setShowPopup(false)}>
           <div className="bg-[#1f1f1f] border border-white/10 rounded-2xl p-8 max-w-sm mx-4 text-center shadow-2xl" style={{ animation: "fadeUp .3s ease both" }}>
             <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4fc3f7" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4fc3f7" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
             </div>
             <h4 className="text-lg font-bold text-white mb-2">Not Live Yet</h4>
             <p className="text-sm text-white/50">This project is currently not deployed. Check back soon for the live version!</p>
@@ -231,10 +231,10 @@ export default function Projects() {
       {!activeCategory && (
         <div className="relative max-w-[1200px] mx-auto px-5 md:px-14">
           <button onClick={() => { scrollTo(-1); pauseAutoplay(); }} className="absolute left-0 md:left-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-accent/10 hover:border-accent/30 hover:text-accent transition-all">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
           </button>
           <button onClick={() => { scrollTo(1); pauseAutoplay(); }} className="absolute right-0 md:right-1 top-1/2 -translate-y-1/2 z-10 w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:bg-accent/10 hover:border-accent/30 hover:text-accent transition-all">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
           </button>
 
           <div
@@ -274,7 +274,7 @@ export default function Projects() {
       {activeCategory && (
         <div className="px-4 md:px-12 max-w-[1100px] mx-auto" style={{ animation: "fadeUp .5s ease both" }}>
           <button onClick={goBack} className="flex items-center gap-2 text-sm text-white/50 hover:text-accent transition-colors mb-8 group">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:-translate-x-1 transition-transform"><path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="group-hover:-translate-x-1 transition-transform"><path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
             Back to categories
           </button>
 
@@ -307,12 +307,12 @@ export default function Projects() {
                   <div className="flex gap-3">
                     {p.github && (
                       <a href={p.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-white/[.05] border border-white/10 text-xs font-semibold text-white/60 hover:border-accent/40 hover:text-accent transition-all">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" /></svg>
                         GitHub
                       </a>
                     )}
                     <button onClick={() => handleLiveClick(p.live)} className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg bg-accent/10 border border-accent/20 text-xs font-semibold text-accent hover:bg-accent/20 transition-all">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
                       Live Site
                     </button>
                   </div>
