@@ -53,7 +53,7 @@ const projects = {
       desc: "Comprehensive LMS with role-based access, course management, grade tracking, and responsive dashboards.",
       tech: ["React.js", "Redux", "Node.js", "PostgreSQL", "Express.js"],
       github: "https://github.com/umerabdullah1818-oss/Learning-Managment-System",
-      live: "popup",
+      live: "https://learning-managment-system-g41p-ogj0ua4no.vercel.app/",
       img: "/projects/lms.png",
     },
   ],
