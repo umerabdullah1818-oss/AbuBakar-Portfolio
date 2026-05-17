@@ -81,7 +81,7 @@ const projects = {
       desc: "A sleek corporate website with modern UI, product showcase, and optimized performance across all devices.",
       tech: ["React.js", "Tailwind CSS", "Express.js", "Framer Motion"],
       github: "https://github.com/umerabdullah1818-oss/Glide_Chemicals",
-      live: "popup",
+      live: "https://glidechemicals.com/",
       img: "/projects/glide.png",
     },
   ],
