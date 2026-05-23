@@ -115,6 +115,14 @@ export default function Hero() {
               </span>
             ))}
           </h1>
+          
+          {/* Mobile-only motivational description */}
+          <p 
+            className="sm:hidden text-center text-white/60 text-[0.85rem] leading-relaxed max-w-[90%] mt-6 mx-auto font-medium"
+            style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
+          >
+            Crafting intelligent, scalable digital experiences. Merging full-stack precision with cutting-edge AI to turn complex problems into elegant solutions.
+          </p>
         </div>
       </div>
 
@@ -124,8 +132,8 @@ export default function Hero() {
         className="absolute left-1/2 bottom-0 -translate-x-1/2 pointer-events-none"
         style={{
           zIndex: 40,
-          width: "clamp(290px, 50vw, 500px)",
-          height: "87%",
+          width: "clamp(340px, 85vw, 600px)",
+          height: "90%",
           opacity: 0,
         }}
       >
