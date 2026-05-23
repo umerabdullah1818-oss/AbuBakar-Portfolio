@@ -137,7 +137,7 @@ export default function Hero() {
         style={{
           zIndex: 40,
           width: "clamp(340px, 85vw, 600px)",
-          height: "90%",
+          height: "75%",
           opacity: 0,
         }}
       >
