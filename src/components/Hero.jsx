@@ -12,6 +12,7 @@ export default function Hero() {
   const contactRef = useRef(null);
   const circleRef = useRef(null);
   const scrollIndRef = useRef(null);
+  const descRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -40,6 +41,14 @@ export default function Hero() {
         { opacity: 0, y: 18 },
         { opacity: 1, y: 0, duration: 0.9 },
         "-=0.6"
+      )
+
+      /* 5. Mobile description fade up */
+      .fromTo(
+        descRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        "-=0.5"
       )
 
       /* 6. Circle brand mark */
@@ -87,7 +96,7 @@ export default function Hero() {
                 color: "rgba(255,255,255,0.65)",
                 textTransform: "uppercase",
                 paddingBottom: "4%",
-                paddingTop: "12%"
+                paddingTop: "10%"
               }}
             >
               Full-Stack AI Developer
@@ -98,7 +107,7 @@ export default function Hero() {
             className="flex whitespace-nowrap"
             style={{
               fontFamily: "'Anton', sans-serif",
-              fontSize: "clamp(2rem, 11vw, 12rem)",
+              fontSize: "clamp(3rem, 11vw, 12rem)",
               letterSpacing: "-0.02em",
               color: "#4fc3f7",
               lineHeight: 0.95,
@@ -115,11 +124,12 @@ export default function Hero() {
               </span>
             ))}
           </h1>
-          
+
           {/* Mobile-only motivational description */}
-          <p 
+          <p
+            ref={descRef}
             className="sm:hidden text-center text-white/60 text-[0.85rem] leading-relaxed max-w-[90%] mt-6 mx-auto font-medium"
-            style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
+            style={{ opacity: 0, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
           >
             Crafting intelligent, scalable digital experiences. Merging full-stack precision with cutting-edge AI to turn complex problems into elegant solutions.
           </p>
