@@ -1,5 +1,6 @@
 import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 function Particles({ count = 80 }) {
   const ref = useRef();
@@ -12,6 +13,18 @@ function Particles({ count = 80 }) {
     }
     return pos;
   }, [count]);
+
+  const circleTexture = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 64;
+    canvas.height = 64;
+    const context = canvas.getContext("2d");
+    context.beginPath();
+    context.arc(32, 32, 30, 0, 2 * Math.PI);
+    context.fillStyle = "white";
+    context.fill();
+    return new THREE.CanvasTexture(canvas);
+  }, []);
 
   useFrame((state) => {
     ref.current.rotation.y = state.clock.elapsedTime * 0.015;
@@ -27,7 +40,15 @@ function Particles({ count = 80 }) {
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.035} color="#4fc3f7" transparent opacity={0.4} sizeAttenuation />
+      <pointsMaterial 
+        size={0.07} 
+        color="#4fc3f7" 
+        transparent 
+        opacity={0.9} 
+        sizeAttenuation 
+        map={circleTexture}
+        depthWrite={false}
+      />
     </points>
   );
 }
@@ -43,7 +64,7 @@ function Scene() {
 
 export default function ThreeBackground() {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.7 }}>
+    <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 1 }}>
       <Canvas
         camera={{ position: [0, 0, 8], fov: 55 }}
         gl={{ antialias: true, alpha: true }}

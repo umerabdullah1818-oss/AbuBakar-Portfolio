@@ -45,7 +45,7 @@ export default function App() {
         a.classList.toggle("active", a.getAttribute("href") === "#" + cur)
       );
       const nav = document.getElementById("navbar");
-      if (nav) nav.style.background = window.scrollY > 20 ? "rgba(26,26,26,0.97)" : "rgba(26,26,26,0.92)";
+      if (nav) nav.style.background = window.scrollY > 20 ? "rgba(26,26,26,0.75)" : "rgba(26,26,26,0.45)";
     };
     window.addEventListener("scroll", onScroll);
 

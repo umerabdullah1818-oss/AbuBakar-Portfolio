@@ -24,7 +24,7 @@
 /* ── BASE ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#1a1a1a;color:#fff;overflow-x:hidden;cursor:none}
+body{font-family:'DM Sans',sans-serif;background:#080a0f;color:#fff;overflow-x:hidden;cursor:none}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 button{font-family:inherit;cursor:none}
@@ -61,7 +61,7 @@ button{font-family:inherit;cursor:none}
 .reveal-delay-4{transition-delay:.4s}
 
 /* ── GRID BG ── */
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(79,195,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,.05) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;animation:gridDrift 20s linear infinite}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(79,195,247,.15) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,.15) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;animation:gridDrift 20s linear infinite}
 
 /* ── HERO STATUS ── */
 .hero-status{opacity:0;animation:fadeUp .7s .1s ease both}
@@ -177,10 +177,20 @@ section{position:relative;z-index:1}
     position:relative !important;
     left:auto !important;
     transform:none !important;
-    margin-bottom:1rem;
+    margin-bottom:0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .service-tilt-card:hover{transform:translateY(-6px) !important}
-  .service-card-inner{width:100% !important;max-width:340px}
+  .service-card-inner{
+    width:100% !important;
+    max-width:340px;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+  }
 
   /* Projects */
   #projects{padding-left:1rem !important;padding-right:1rem !important}

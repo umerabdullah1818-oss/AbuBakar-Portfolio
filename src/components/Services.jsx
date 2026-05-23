@@ -99,7 +99,7 @@ export default function Services() {
       </p>
 
       <div
-        className={`max-w-[1200px] mx-auto ${isMobile ? "flex flex-col items-center gap-5" : "relative flex justify-center items-center"}`}
+        className={`max-w-[1200px] mx-auto ${isMobile ? "grid grid-cols-1 auto-rows-fr gap-5 place-items-center" : "relative flex justify-center items-center"}`}
         style={isMobile ? {} : { minHeight: 440 }}
       >
         {services.map((s, i) => {

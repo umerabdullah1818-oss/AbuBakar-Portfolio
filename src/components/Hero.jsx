@@ -1,159 +1,228 @@
-import { useEffect, useRef } from "react";
-import avatarImg from "../assets/avatar.jpg";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import avatarImg from "../assets/hero-portrait.png";
+
 
 export default function Hero() {
-  const canvasRef = useRef(null);
-  const stageRef = useRef(null);
-  const cardRef = useRef(null);
+  const sectionRef = useRef(null);
+  const backLettersRef = useRef([]);
+  const photoRef = useRef(null);
 
-  /* Particles */
+  const eyebrowRef = useRef(null);
+  const contactRef = useRef(null);
+  const circleRef = useRef(null);
+  const scrollIndRef = useRef(null);
+
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas); resize();
-    const pts = Array.from({ length: 55 }, () => ({
-      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
-      r: Math.random() * 1.4 + 0.4, o: Math.random() * 0.45 + 0.08,
-    }));
-    let raf;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      pts.forEach((p) => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(79,195,247,${p.o})`; ctx.fill();
-      });
-      pts.forEach((a, i) =>
-        pts.slice(i + 1).forEach((b) => {
-          const d = Math.hypot(a.x - b.x, a.y - b.y);
-          if (d < 95) {
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(79,195,247,${(1 - d / 95) * 0.07})`; ctx.lineWidth = 0.5; ctx.stroke();
-          }
-        })
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" },
+      delay: 0.4,
+    });
+
+    /* 1. Heading letters — staggered scaleY wipe */
+    tl.fromTo(
+      backLettersRef.current.filter(Boolean),
+      { scaleY: 0, opacity: 0 },
+      { scaleY: 1, opacity: 1, duration: 0.9, stagger: 0.04, transformOrigin: "bottom center" }
+    )
+
+      /* 2. Photo fades + slides up */
+      .fromTo(
+        photoRef.current,
+        { opacity: 0, y: 80 },
+        { opacity: 1, y: 0, duration: 1.4, ease: "power2.out" },
+        "-=0.7"
+      )
+
+      /* 4. Eyebrow fades in last with upward drift */
+      .fromTo(
+        eyebrowRef.current,
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.9 },
+        "-=0.6"
+      )
+
+      /* 6. Circle brand mark */
+      .fromTo(
+        circleRef.current,
+        { opacity: 0, scale: 0.7 },
+        { opacity: 1, scale: 1, duration: 0.6 },
+        "-=0.4"
+      )
+
+      /* 7. Scroll indicator */
+      .fromTo(
+        scrollIndRef.current,
+        { opacity: 0 },
+        { opacity: 0.35, duration: 0.8 },
+        "-=0.3"
       );
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
   }, []);
 
-  /* Avatar parallax — only when hero is visible */
-  useEffect(() => {
-    const stage = stageRef.current;
-    const card = cardRef.current;
-    if (!stage || !card) return;
-
-    let isVisible = true;
-
-    const resetTransforms = () => {
-      card.style.transform = "";
-      stage.style.transform = "";
-    };
-
-    const move = (e) => {
-      if (!isVisible) return;
-      const r = stage.getBoundingClientRect();
-      const dx = ((e.clientX - (r.left + r.width / 2)) / r.width) * 2;
-      const dy = ((e.clientY - (r.top + r.height / 2)) / r.height) * 2;
-      card.style.transform = `rotateX(${dy * 11}deg) rotateY(${-dx * 11}deg) translateZ(20px)`;
-      stage.style.transform = `perspective(800px) rotateX(${dy * 3.5}deg) rotateY(${-dx * 3.5}deg)`;
-    };
-    const leave = () => resetTransforms();
-
-    /* Observe hero visibility — reset when leaving */
-    const section = document.getElementById("home");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisible = entry.isIntersecting;
-        if (!isVisible) resetTransforms();
-      },
-      { threshold: 0.1 }
-    );
-    if (section) observer.observe(section);
-
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseleave", leave);
-    return () => {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseleave", leave);
-      observer.disconnect();
-    };
-  }, []);
-
-  const pills = ["React.js", "Node.js", "Next.js", "Python", "OpenAI", "LangChain", "N8N", "PostgreSQL", "Vapi"];
-
+  const heading = "UMER ABDULLAH";
   return (
-    <section id="home" className="relative min-h-screen flex flex-col md:flex-row items-center px-5 md:px-12 py-20 pt-28 gap-6 md:gap-10 overflow-hidden">
-      <div className="grid-bg"></div>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <section
+      id="home"
+      ref={sectionRef}
+      className="relative w-full h-screen overflow-hidden"
+    >
+      {/* ── Grid background ── */}
+      <div className="grid-bg" style={{ zIndex: 10, opacity: 0.8 }} />
 
-      {/* Left */}
-      <div className="relative z-10 flex-1 min-w-0 max-md:text-center">
-
-        <h1 className="hero-name font-display text-[clamp(2.4rem,5vw,3.6rem)] font-bold leading-[1.08] mb-4">
-          <span>Umer</span><br />
-          <span className="bg-gradient-to-r from-blue-500 via-accent to-purple-500 bg-clip-text text-transparent">Abdullah Shah</span>
-        </h1>
-
-        <div className="hero-role flex flex-wrap items-center gap-2 text-sm text-white/55 mb-5">
-          <span className="text-accent font-semibold">Full Stack Developer</span>
-          <span className="text-white/20">◆</span>
-          <span>AI Engineer</span>
-          <span className="text-white/20">◆</span>
-          <span>Automation Architect</span>
-        </div>
-
-        <p className="hero-desc text-white/55 leading-relaxed max-w-lg mb-6 max-md:max-w-full max-md:mx-auto max-md:text-sm">
-          Building <em className="text-white/80">intelligent digital experiences</em> — from robust full-stack systems to{" "}
-          <em className="text-white/80">multi-agent AI pipelines</em>. I turn complex problems into elegant, scalable solutions.
-        </p>
-
-        <div className="hero-tech flex flex-wrap gap-2 mb-8">
-          {pills.map((t) => (
-            <span key={t} className="px-3 py-[5px] rounded-full border border-white/10 bg-white/[.04] text-xs text-white/50 font-medium tracking-wide hover:border-accent/40 hover:text-accent transition-colors">
-              {t}
-            </span>
-          ))}
-        </div>
-
-        <div className="hero-btns flex flex-wrap gap-3">
-          <a href="#projects" className="hbtn hbtn-primary">View Projects ↗</a>
-          <a href="#contact" className="hbtn hbtn-secondary">Contact Me →</a>
-          <a href="/resume.pdf" download="Umer_Abdullah_Resume.pdf" className="hbtn hbtn-hire">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5 inline-block"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Download Resume
-          </a>
-        </div>
-      </div>
-
-      {/* Right: Avatar */}
-      <div className="relative z-10 flex-1 flex justify-center items-center w-full">
-        <div ref={stageRef} className="relative w-[220px] h-[220px] md:w-[360px] md:h-[360px] flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
-          <div ref={cardRef} className="av-card" style={{ transformStyle: "preserve-3d" }}>
-            <img src={avatarImg} alt="Umer Abdullah Shah" />
-            <div className="av-overlay"></div>
-            <div className="av-scan"></div>
+      {/* ── Back text layer — behind person ── */}
+      <div
+        className="absolute inset-0 flex items-start justify-center pt-[20vh] sm:pt-[24vh] pointer-events-none select-none"
+        style={{ zIndex: 20 }}
+      >
+        <div className="flex flex-col items-center lg:items-start">
+          {/* Eyebrow text — centered above the heading */}
+          <div ref={eyebrowRef} style={{ opacity: 0, marginBottom: "-1vw" }}>
+            <p
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontStyle: "italic",
+                fontSize: "clamp(0.6rem, 2.5vw, 1.25rem)",
+                fontWeight: 500,
+                letterSpacing: "0.18em",
+                color: "rgba(255,255,255,0.65)",
+                textTransform: "uppercase",
+                paddingBottom: "4%",
+                paddingTop: "12%"
+              }}
+            >
+              Full-Stack AI Developer
+            </p>
           </div>
-          <div className="av-chip absolute -top-4 -right-8" style={{ animationDelay: "0s" }}><span className="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block mr-1"></span>MERN Stack</div>
-          <div className="av-chip absolute top-1/4 -left-16" style={{ animationDelay: "1.2s" }}><span className="w-1.5 h-1.5 rounded-full bg-purple-400 inline-block mr-1"></span>AI &amp; LLMs</div>
-          <div className="av-chip absolute bottom-4 -right-12" style={{ animationDelay: "2.5s" }}><span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block mr-1"></span>Voice AI</div>
-          <div className="av-chip absolute -bottom-6 left-0" style={{ animationDelay: "3.8s" }}><span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block mr-1"></span>N8N Flows</div>
+
+          <h1
+            className="flex whitespace-nowrap"
+            style={{
+              fontFamily: "'Anton', sans-serif",
+              fontSize: "clamp(2rem, 11vw, 12rem)",
+              letterSpacing: "-0.02em",
+              color: "#4fc3f7",
+              lineHeight: 0.95,
+            }}
+          >
+            {heading.split("").map((letter, i) => (
+              <span
+                key={`b${i}`}
+                ref={(el) => (backLettersRef.current[i] = el)}
+                className="inline-block"
+                style={{ opacity: 0 }}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </span>
+            ))}
+          </h1>
         </div>
       </div>
 
-
-      {/* Scroll indicator */}
-      <div className="scroll-indicator absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <div className="scroll-line"></div>
-        <span className="text-[0.68rem] tracking-[0.12em] text-white/35 uppercase">Scroll</span>
+      {/* ── Person image — centered, layered IN FRONT of all text ── */}
+      <div
+        ref={photoRef}
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 pointer-events-none"
+        style={{
+          zIndex: 40,
+          width: "clamp(250px, 42vw, 500px)",
+          height: "84%",
+          opacity: 0,
+        }}
+      >
+        <img
+          src={avatarImg}
+          alt="Umer Abdullah Shah"
+          className="w-full h-full object-contain object-bottom"
+          draggable="false"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)",
+            filter: "contrast(1.08) brightness(0.97)",
+          }}
+        />
       </div>
+
+
+
+      {/* ── Bottom gradient for readability ── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[30%] pointer-events-none"
+        style={{
+          zIndex: 19,
+          background: "linear-gradient(to top, #080a0f 0%, transparent 100%)",
+        }}
+      />
+
+      {/* ── Resume Download Button ── */}
+      <a
+        ref={circleRef}
+        href="/resume.pdf"
+        download="Umer_Abdullah_Resume.pdf"
+        className="absolute hidden sm:flex group items-center gap-4 cursor-pointer pointer-events-auto"
+        style={{ zIndex: 50, bottom: "7%", right: "6%" }}
+      >
+        <span
+          className="text-white/80 font-sans font-medium uppercase tracking-[0.2em] text-[0.6rem] 
+                     opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 
+                     transition-all duration-500 ease-out whitespace-nowrap"
+        >
+          Click here to download resume
+        </span>
+
+        <div className="relative w-14 h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-md overflow-hidden group-hover:border-[#4fc3f7]/50 group-hover:bg-[#4fc3f7]/10 transition-colors duration-500 shadow-lg">
+          {/* Closed Envelope */}
+          <svg
+            className="absolute w-6 h-6 text-white/70 transition-all duration-300 group-hover:opacity-0 group-hover:scale-75 group-hover:-translate-y-2"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+
+          {/* Open Envelope */}
+          <svg
+            className="absolute w-6 h-6 text-[#4fc3f7] opacity-0 scale-75 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z" />
+            <path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10" />
+            {/* Paper popping out slightly */}
+            <path d="M6 10V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100" />
+          </svg>
+        </div>
+      </a>
+
+      {/* ── Scroll indicator ── */}
+      <div
+        ref={scrollIndRef}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        style={{ zIndex: 50, opacity: 0 }}
+      >
+        <span
+          className="uppercase"
+          style={{
+            fontSize: "0.55rem",
+            letterSpacing: "0.25em",
+            color: "rgba(255,255,255,0.3)",
+          }}
+        >
+          Scroll
+        </span>
+        <div className="w-px h-8 bg-gradient-to-b from-white/25 to-transparent animate-pulse" />
+      </div>
+
+      {/* ── Subtle noise / grid overlay ── */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          zIndex: 5,
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
     </section>
   );
 }
