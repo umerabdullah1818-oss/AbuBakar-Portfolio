@@ -44,22 +44,47 @@ export default function Hero() {
     return () => { cancelAnimationFrame(raf); ro.disconnect(); };
   }, []);
 
-  /* Avatar parallax */
+  /* Avatar parallax — only when hero is visible */
   useEffect(() => {
     const stage = stageRef.current;
     const card = cardRef.current;
     if (!stage || !card) return;
+
+    let isVisible = true;
+
+    const resetTransforms = () => {
+      card.style.transform = "";
+      stage.style.transform = "";
+    };
+
     const move = (e) => {
+      if (!isVisible) return;
       const r = stage.getBoundingClientRect();
       const dx = ((e.clientX - (r.left + r.width / 2)) / r.width) * 2;
       const dy = ((e.clientY - (r.top + r.height / 2)) / r.height) * 2;
       card.style.transform = `rotateX(${dy * 11}deg) rotateY(${-dx * 11}deg) translateZ(20px)`;
       stage.style.transform = `perspective(800px) rotateX(${dy * 3.5}deg) rotateY(${-dx * 3.5}deg)`;
     };
-    const leave = () => { card.style.transform = ""; stage.style.transform = ""; };
+    const leave = () => resetTransforms();
+
+    /* Observe hero visibility — reset when leaving */
+    const section = document.getElementById("home");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (!isVisible) resetTransforms();
+      },
+      { threshold: 0.1 }
+    );
+    if (section) observer.observe(section);
+
     document.addEventListener("mousemove", move);
     document.addEventListener("mouseleave", leave);
-    return () => { document.removeEventListener("mousemove", move); document.removeEventListener("mouseleave", leave); };
+    return () => {
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseleave", leave);
+      observer.disconnect();
+    };
   }, []);
 
   const pills = ["React.js", "Node.js", "Next.js", "Python", "OpenAI", "LangChain", "N8N", "PostgreSQL", "Vapi"];

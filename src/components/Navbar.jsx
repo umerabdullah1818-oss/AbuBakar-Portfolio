@@ -13,8 +13,8 @@ export default function Navbar() {
       </a>
 
       <ul className="nav-links hidden md:flex gap-9 items-center">
-        {["Home", "About", "Projects", "Services", "Resume"].map((t, i) => {
-          const href = i === 4 ? "#contact" : `#${t.toLowerCase()}`;
+        {["Home", "About", "Projects", "Services", "Contact"].map((t, i) => {
+          const href = `#${t.toLowerCase()}`;
           return (
             <li key={t}>
               <a

@@ -160,8 +160,9 @@ section{position:relative;z-index:1}
   .hero-role{justify-content:center;flex-wrap:wrap}
   .av-chip{display:none !important}
 
-  /* Avatar - show properly */
-  .av-card{width:100% !important;height:100% !important}
+  /* Avatar - show properly on mobile */
+  .av-card{width:100% !important;height:100% !important;animation:morphBorder 12s ease-in-out infinite !important;transform:none !important}
+  #home > div:last-of-type{flex:0 0 auto;width:200px;height:200px;margin:0 auto;overflow:visible}
 
   /* About cards */
   #about .grid{grid-template-columns:1fr !important;gap:1rem}
