@@ -77,6 +77,14 @@ const projects = {
   ],
   frontend: [
     {
+      name: "Reownlogics — 2D & 3D Animation Services",
+      desc: "A visually stunning and responsive landing page for 2D & 3D animation services. Crafted with React, Tailwind CSS, and Framer Motion to showcase creative portfolios with engaging animations.",
+      tech: ["React.js", "Tailwind CSS", "Vite", "Framer Motion"],
+      github: "https://github.com/umerabdullah1818-oss/Reownlogics-2D_3D_Services",
+      live: "https://2dgraphics.reownlogics.com/",
+      img: "/projects/2d3d-services.png",
+    },
+    {
       name: "Glide Chemicals — Corporate Website",
       desc: "A sleek corporate website with modern UI, product showcase, and optimized performance across all devices.",
       tech: ["React.js", "Tailwind CSS", "Express.js", "Framer Motion"],
