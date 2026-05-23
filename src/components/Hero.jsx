@@ -11,7 +11,7 @@ export default function Hero() {
   const eyebrowRef = useRef(null);
   const contactRef = useRef(null);
   const circleRef = useRef(null);
-  const scrollIndRef = useRef(null);
+
   const descRef = useRef(null);
 
   useEffect(() => {
@@ -59,13 +59,7 @@ export default function Hero() {
         "-=0.4"
       )
 
-      /* 7. Scroll indicator */
-      .fromTo(
-        scrollIndRef.current,
-        { opacity: 0 },
-        { opacity: 0.35, duration: 0.8 },
-        "-=0.3"
-      );
+;
   }, []);
 
   const heading = "UMER ABDULLAH";
@@ -96,7 +90,7 @@ export default function Hero() {
                 color: "rgba(255,255,255,0.65)",
                 textTransform: "uppercase",
                 paddingBottom: "4%",
-                paddingTop: "10%"
+                paddingTop: "5%"
               }}
             >
               Full-Stack AI Developer
@@ -212,24 +206,7 @@ export default function Hero() {
         </div>
       </a>
 
-      {/* ── Scroll indicator ── */}
-      <div
-        ref={scrollIndRef}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        style={{ zIndex: 50, opacity: 0 }}
-      >
-        <span
-          className="uppercase"
-          style={{
-            fontSize: "0.55rem",
-            letterSpacing: "0.25em",
-            color: "rgba(255,255,255,0.3)",
-          }}
-        >
-          Scroll
-        </span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/25 to-transparent animate-pulse" />
-      </div>
+
 
       {/* ── Subtle noise / grid overlay ── */}
       <div
