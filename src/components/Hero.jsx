@@ -124,8 +124,8 @@ export default function Hero() {
         className="absolute left-1/2 bottom-0 -translate-x-1/2 pointer-events-none"
         style={{
           zIndex: 40,
-          width: "clamp(250px, 42vw, 500px)",
-          height: "84%",
+          width: "clamp(290px, 50vw, 500px)",
+          height: "87%",
           opacity: 0,
         }}
       >
