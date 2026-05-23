@@ -27,7 +27,7 @@ const services = [
   },
   {
     name: "Voice AI & Conversational AI",
-    color: "#2979ff",
+    color: "#4fc3f7",
     featured: true,
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`,
     bullets: [
@@ -146,7 +146,7 @@ export default function Services() {
                   {s.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <CheckIcon color={s.color} />
-                      <span className="text-[0.8rem] text-white/50 leading-snug">{b}</span>
+                      <span className="text-[0.8rem] text-white/65 leading-snug">{b}</span>
                     </li>
                   ))}
                 </ul>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,6 +12,7 @@ import useScrollReveal from "./hooks/useScrollReveal";
 
 export default function App() {
   const cursorRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useScrollReveal();
 
@@ -48,9 +49,20 @@ export default function App() {
     };
     window.addEventListener("scroll", onScroll);
 
+    /* scroll progress bar */
+    const onScrollProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", onScrollProgress, { passive: true });
+    onScrollProgress();
+
     return () => {
       document.removeEventListener("mousemove", move);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScrollProgress);
       interactives.forEach((el) => {
         el.removeEventListener("mouseenter", enter);
         el.removeEventListener("mouseleave", leave);
@@ -61,6 +73,13 @@ export default function App() {
   return (
     <>
       <ThreeBackground />
+      {/* Scroll Progress Bar */}
+      <div className="scroll-progress-track">
+        <div
+          className="scroll-progress-bar"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
       <div className="cursor" ref={cursorRef}></div>
       <Navbar />
       <Hero />

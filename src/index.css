@@ -33,6 +33,14 @@ button{font-family:inherit;cursor:none}
 .cursor{position:fixed;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}
 .cursor.grow{width:40px;height:40px}
 
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress-track{position:fixed;top:0;left:0;right:0;height:3px;z-index:9998;background:rgba(26,26,26,0.5);backdrop-filter:blur(4px)}
+.scroll-progress-bar{height:100%;background:linear-gradient(90deg,#2979ff 0%,#4fc3f7 35%,#aa00ff 65%,#e040fb 100%);border-radius:0 2px 2px 0;transition:width 0.15s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(79,195,247,.5),0 0 20px rgba(79,195,247,.2);position:relative}
+.scroll-progress-bar::after{content:'';position:absolute;right:0;top:-1px;width:8px;height:5px;background:#fff;border-radius:50%;box-shadow:0 0 8px #4fc3f7,0 0 16px rgba(79,195,247,.6);opacity:.9}
+
+/* ── PROJECT IMAGE QUALITY ── */
+.project-img-hd{image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0)}
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}

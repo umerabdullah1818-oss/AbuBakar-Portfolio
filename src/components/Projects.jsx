@@ -6,35 +6,35 @@ const categories = [
     name: "Full-Stack Development",
     desc: "End-to-end web apps with robust backends and seamless frontends.",
     gradient: "linear-gradient(135deg, #0a1a2e 0%, #1a3a5a 50%, #0d2a45 100%)",
-    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=95",
   },
   {
     id: "ai",
     name: "AI & Automation",
     desc: "Intelligent pipelines, voice agents, and multi-agent AI systems.",
     gradient: "linear-gradient(135deg, #1a0a2e 0%, #3a1a5a 50%, #2a1050 100%)",
-    img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=95",
   },
   {
     id: "frontend",
     name: "Frontend & UI",
     desc: "Pixel-perfect interfaces that captivate and convert visitors.",
     gradient: "linear-gradient(135deg, #0a2018 0%, #1a4030 50%, #0d3020 100%)",
-    img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=95",
   },
   {
     id: "wordpress",
     name: "WordPress & CMS",
     desc: "Professional business websites with CMS, SEO, and performance.",
     gradient: "linear-gradient(135deg, #0a1520 0%, #1a3040 50%, #0a2035 100%)",
-    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=95",
   },
   {
     id: "crm",
     name: "CRM & SEO",
     desc: "GoHighLevel CRM setups, SEO optimization, and growth strategies.",
     gradient: "linear-gradient(135deg, #1a1008 0%, #2a2010 50%, #1a1508 100%)",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=95",
   },
 ];
 
@@ -116,7 +116,7 @@ const ProjectImageCarousel = ({ images, img, name }) => {
   if (!images || images.length === 0) {
     return (
       <div className="relative h-[220px] md:h-[400px] overflow-hidden bg-[#1a1a1a]">
-        <img src={img} alt={name} className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        <img src={img} alt={name} className="w-full h-full object-cover object-center project-img-hd transition-transform duration-700 group-hover:scale-105" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(31,31,31,0.9)] via-transparent to-transparent opacity-80"></div>
       </div>
     );
@@ -124,7 +124,7 @@ const ProjectImageCarousel = ({ images, img, name }) => {
 
   return (
     <div className="relative h-[220px] md:h-[400px] overflow-hidden group/carousel bg-[#1a1a1a]">
-      <img src={images[currentIndex]} alt={`${name} - ${currentIndex + 1}`} className="w-full h-full object-cover object-top transition-transform duration-500" loading="lazy" />
+      <img src={images[currentIndex]} alt={`${name} - ${currentIndex + 1}`} className="w-full h-full object-cover object-center project-img-hd transition-transform duration-500" loading="lazy" />
       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(31,31,31,0.9)] via-transparent to-transparent opacity-80"></div>
 
       {/* Controls */}
