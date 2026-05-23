@@ -59,7 +59,7 @@ export default function Hero() {
         "-=0.4"
       )
 
-;
+      ;
   }, []);
 
   const heading = "UMER ABDULLAH";
@@ -74,7 +74,7 @@ export default function Hero() {
 
       {/* ── Back text layer — behind person ── */}
       <div
-        className="absolute inset-0 flex items-start justify-center pt-[20vh] sm:pt-[24vh] pointer-events-none select-none"
+        className="absolute inset-0 flex items-start justify-center pt-[14vh] sm:pt-[24vh] pointer-events-none select-none"
         style={{ zIndex: 20 }}
       >
         <div className="flex flex-col items-center lg:items-start">
@@ -93,7 +93,7 @@ export default function Hero() {
                 paddingTop: "5%"
               }}
             >
-              Full-Stack AI Developer
+              Full Stack AI Developer
             </p>
           </div>
 
@@ -137,7 +137,7 @@ export default function Hero() {
         style={{
           zIndex: 40,
           width: "clamp(340px, 85vw, 600px)",
-          height: "75%",
+          height: "70%",
           opacity: 0,
         }}
       >
