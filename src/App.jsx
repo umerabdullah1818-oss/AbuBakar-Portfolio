@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -12,7 +12,7 @@ import useScrollReveal from "./hooks/useScrollReveal";
 
 export default function App() {
   const cursorRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressRef = useRef(null);
 
   useScrollReveal();
 
@@ -49,20 +49,28 @@ export default function App() {
     };
     window.addEventListener("scroll", onScroll);
 
-    /* scroll progress bar */
-    const onScrollProgress = () => {
+    /* scroll progress bar — direct DOM for smooth performance */
+    let rafId = null;
+    const updateProgress = () => {
+      const bar = progressRef.current;
+      if (!bar) return;
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrollProgress(progress);
+      bar.style.transform = `scaleX(${progress / 100})`;
+    };
+    const onScrollProgress = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateProgress);
     };
     window.addEventListener("scroll", onScrollProgress, { passive: true });
-    onScrollProgress();
+    updateProgress();
 
     return () => {
       document.removeEventListener("mousemove", move);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("scroll", onScrollProgress);
+      if (rafId) cancelAnimationFrame(rafId);
       interactives.forEach((el) => {
         el.removeEventListener("mouseenter", enter);
         el.removeEventListener("mouseleave", leave);
@@ -76,8 +84,8 @@ export default function App() {
       {/* Scroll Progress Bar */}
       <div className="scroll-progress-track">
         <div
+          ref={progressRef}
           className="scroll-progress-bar"
-          style={{ width: `${scrollProgress}%` }}
         />
       </div>
       <div className="cursor" ref={cursorRef}></div>
