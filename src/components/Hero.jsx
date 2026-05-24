@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import avatarImg from "../assets/hero-portrait.png";
+import avatarImg from "../assets/hero-portrait.webp";
 
 
 export default function Hero() {
@@ -146,6 +146,9 @@ export default function Hero() {
           alt="Umer Abdullah Shah"
           className="w-full h-full object-contain object-bottom"
           draggable="false"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
           style={{
             WebkitMaskImage:
               "linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)",
