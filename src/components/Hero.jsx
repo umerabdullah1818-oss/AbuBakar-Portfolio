@@ -79,7 +79,7 @@ export default function Hero() {
       >
         <div className="flex flex-col items-center lg:items-start">
           {/* Eyebrow text — centered above the heading */}
-          <div ref={eyebrowRef} style={{ opacity: 0, marginBottom: "-1vw" }}>
+          <div ref={eyebrowRef} className="lg:self-center" style={{ opacity: 0, marginBottom: "-1vw" }}>
             <p
               style={{
                 fontFamily: "'DM Sans', sans-serif",
