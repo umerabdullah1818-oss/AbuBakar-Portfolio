@@ -152,6 +152,7 @@ export default function Hero() {
             maskImage:
               "linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)",
             filter: "contrast(1.08) brightness(0.97)",
+            imageRendering: "auto",
           }}
         />
       </div>
