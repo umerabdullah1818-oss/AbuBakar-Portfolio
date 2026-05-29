@@ -228,7 +228,7 @@ export default function Hero() {
 
 
       {/* ── Social Links ── */}
-      <div ref={socialRef} className="absolute left-6 bottom-10 z-50 flex flex-col gap-4 items-center">
+      <div ref={socialRef} className="absolute left-6 bottom-10 z-50 hidden md:flex flex-col gap-4 items-center">
         {[
           {
             name: "LinkedIn",
