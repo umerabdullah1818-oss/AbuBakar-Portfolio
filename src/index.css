@@ -105,13 +105,341 @@ button{font-family:inherit;cursor:none}
 .scroll-line{width:36px;height:1px;background:linear-gradient(90deg,#4fc3f7,transparent);position:relative;overflow:hidden}
 .scroll-line::after{content:'';position:absolute;width:40%;height:100%;background:#4fc3f7;animation:lineSlide 1.5s ease-in-out infinite;box-shadow:0 0 8px #4fc3f7}
 
-/* ── TECH STACK ── */
-.ts-item{transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .35s,box-shadow .35s;position:relative;overflow:hidden}
-.ts-item::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(79,195,247,.08),transparent 70%);opacity:0;transition:opacity .35s}
-.ts-item:hover::before{opacity:1}
-.ts-item:hover{transform:translateY(-8px);border-color:rgba(79,195,247,.25);box-shadow:0 12px 40px rgba(79,195,247,.08)}
-.ts-item:hover .ts-icon{transform:scale(1.12)}
-.ts-item:hover .ts-label{color:#fff}
+/* ── HERO SMOKE FOG (CSS VOLUMETRIC FOG) ── */
+@keyframes fogFloat1{
+  0%{transform:translate(0, 0) scale(1)}
+  50%{transform:translate(5%, -10%) scale(1.1)}
+  100%{transform:translate(-5%, 5%) scale(1)}
+}
+@keyframes fogFloat2{
+  0%{transform:translate(0, 0) scale(1.1)}
+  50%{transform:translate(-5%, -15%) scale(1)}
+  100%{transform:translate(5%, 10%) scale(1.15)}
+}
+
+.hero-smoke-container{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:35%;
+  pointer-events:none;
+  overflow:hidden;
+  filter:blur(30px); /* Soften the edges perfectly */
+  z-index:35;
+  mix-blend-mode:screen; /* Ensures it looks like light passing through */
+}
+.hero-smoke-layer{
+  position:absolute;
+  bottom:-15%;
+  border-radius:50%;
+  will-change:transform;
+}
+.hero-smoke-1{
+  width:60vw; height:40vh; left:-15%;
+  animation:fogFloat1 15s ease-in-out infinite alternate;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+}
+.hero-smoke-2{
+  width:70vw; height:45vh; left:15%;
+  animation:fogFloat2 18s ease-in-out infinite alternate-reverse;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 70%);
+}
+.hero-smoke-3{
+  width:60vw; height:40vh; right:-10%;
+  animation:fogFloat1 14s ease-in-out infinite alternate;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+}
+.hero-smoke-4{
+  width:80vw; height:50vh; left:10%; bottom:-30%;
+  animation:fogFloat2 22s ease-in-out infinite alternate;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+}
+.hero-smoke-5{
+  width:50vw; height:35vh; right:20%; bottom:-25%;
+  animation:fogFloat1 16s ease-in-out infinite alternate-reverse;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, transparent 70%);
+}
+
+/* ── TECH STACK — GALAXY LAYOUT ── */
+.ts-galaxy-section{
+  position:relative;
+  padding:80px 24px 100px;
+  overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 50% 60%,rgba(15,5,30,.95) 0%,rgba(8,10,15,.98) 50%,#080a0f 100%);
+  min-height:100vh;
+}
+
+/* ── Header ── */
+.ts-galaxy-header{
+  position:relative;
+  z-index:10;
+  text-align:center;
+  width:100%;
+  margin:0 auto 40px;
+}
+.ts-galaxy-badge{
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  padding:6px 20px;
+  margin-bottom:20px;
+  backdrop-filter:blur(6px);
+  background:rgba(255,255,255,.03);
+}
+.ts-galaxy-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:700;
+  line-height:1.25;
+  margin-bottom:16px;
+  color:#fff;
+}
+.ts-galaxy-desc{
+  font-size:.92rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.42);
+  max-width:480px;
+  margin:0 auto;
+}
+
+/* ── Galaxy Visual Container ── */
+.ts-galaxy-visual{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
+  width:100%;
+  max-width:560px;
+  aspect-ratio:1/1;
+  z-index:1;
+}
+
+/* ── Sleek Galaxy Orb ── */
+.galaxy-container{
+  position:absolute;
+  inset:0;
+}
+.galaxy-developer-parallax {
+  position:absolute;
+  inset:0;
+  transform:translate(calc(var(--mouse-x, 0) * 40px), calc(var(--mouse-y, 0) * 40px));
+  transition:transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+  z-index:4;
+}
+.galaxy-developer-wrapper {
+  position:absolute;
+  top:50%;left:50%;
+  width:80%;height:80%;
+  transform:translate(-50%,-50%);
+}
+.galaxy-developer{
+  width:100%;height:100%;
+  object-fit:contain;
+  mix-blend-mode:screen;
+  -webkit-mask-image: radial-gradient(circle at center, black 65%, transparent 80%);
+  mask-image: radial-gradient(circle at center, black 65%, transparent 80%);
+  filter:drop-shadow(0 0 20px rgba(150,50,255,0.4));
+}
+@keyframes developerFloat{
+  0%, 100%{transform:translate(-50%,-50%) translateY(-10px)}
+  50%{transform:translate(-50%,-50%) translateY(10px)}
+}
+
+/* ── Removed Orbiting Tech Icons ── */
+
+/* ── Removed Orbital Rings ── */
+
+/* ── Global Star Particles ── */
+.ts-galaxy-section {
+  position:relative;
+  overflow:hidden;
+}
+.ts-galaxy-stars-global {
+  position:absolute;
+  top:50%;left:50%;
+  width:150vw;
+  height:150vh;
+  transform:translate(-50%,-50%);
+  animation:galaxySpin 120s linear infinite;
+  pointer-events:none;
+  z-index:1;
+}
+@keyframes starTwinkle{
+  0%,100%{opacity:0}
+  50%{opacity:var(--star-opacity,1)}
+}
+.ts-global-star {
+  position:absolute;
+  left:var(--star-x);
+  top:var(--star-y);
+  width:var(--star-size);
+  height:var(--star-size);
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 6px rgba(255,255,255,.8);
+  animation:starTwinkle var(--star-duration) ease-in-out var(--star-delay) infinite;
+}
+
+/* — Overall 3-col layout — */
+.ts-galaxy-layout{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  max-width:1340px;
+  margin:0 auto;
+  position:relative;
+  z-index:10;
+}
+
+/* — Side panels (left & right card groups) — */
+.ts-galaxy-side{
+  display:flex;
+  gap:14px;
+  flex:1 1 0;
+  min-width:0;
+}
+.ts-galaxy-left{justify-content:flex-end}
+.ts-galaxy-right{justify-content:flex-start}
+
+/* — Single column of cards — */
+.ts-galaxy-col{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  width:120px;
+  flex-shrink:0;
+}
+
+/* — Center part — */
+.ts-galaxy-center{
+  flex:0 0 400px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  z-index:2;
+}
+.ts-galaxy-visual{
+  position:relative;
+  width:100%;
+  aspect-ratio:1;
+  max-width:400px;
+  margin:0 auto;
+}
+
+/* ── Individual Animated Card ── */
+@keyframes cardFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+@keyframes cardAppear{
+  from{opacity:0;transform:translateY(30px) scale(.92)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.ts-galaxy-card{
+  position:relative;
+  border-radius:18px;
+  padding:2px;
+  opacity:0;
+  transition:transform .45s cubic-bezier(.4,0,.2,1);
+  animation:cardFloat var(--float-duration,3.5s) ease-in-out var(--float-delay,0s) infinite;
+  cursor:default;
+}
+.ts-visible .ts-galaxy-card{
+  animation:cardAppear .7s ease forwards,cardFloat var(--float-duration,3.5s) ease-in-out var(--float-delay,0s) infinite;
+  animation-delay:var(--appear-delay, 0s);
+}
+/* Stagger appear via the existing animationDelay on the element */
+.ts-visible .ts-galaxy-card{
+  opacity:0;
+  animation-fill-mode:forwards,none;
+}
+
+/* Glowing animated border */
+@keyframes borderGlow{
+  0%{opacity:.3;background-position:0% 50%}
+  50%{opacity:.6;background-position:100% 50%}
+  100%{opacity:.3;background-position:0% 50%}
+}
+.ts-galaxy-card-glow{
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(130,60,255,.2),rgba(79,195,247,.15),rgba(170,0,255,.2),rgba(41,121,255,.15));
+  background-size:300% 300%;
+  animation:borderGlow 4s ease-in-out infinite;
+  z-index:0;
+  opacity:.4;
+  transition:opacity .4s;
+}
+.ts-galaxy-card:hover .ts-galaxy-card-glow{
+  opacity:1;
+}
+
+/* Inner card content */
+.ts-galaxy-card-inner{
+  position:relative;
+  z-index:1;
+  background:rgba(12,8,24,.85);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:22px 14px 16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  backdrop-filter:blur(12px);
+  transition:border-color .4s,box-shadow .4s,background .4s;
+}
+.ts-galaxy-card:hover .ts-galaxy-card-inner{
+  border-color:rgba(150,80,255,.3);
+  box-shadow:0 8px 32px rgba(130,50,255,.12),0 0 60px rgba(79,195,247,.06);
+  background:rgba(20,12,40,.9);
+}
+
+/* Icon */
+.ts-galaxy-icon{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .4s cubic-bezier(.4,0,.2,1),filter .4s;
+}
+.ts-galaxy-icon img,
+.ts-galaxy-icon svg,
+.ts-galaxy-icon div{
+  width:100%;height:100%;
+  object-fit:contain;
+}
+.ts-galaxy-card:hover .ts-galaxy-icon{
+  transform:scale(1.15) rotate(-3deg);
+  filter:drop-shadow(0 0 8px rgba(150,100,255,.3));
+}
+
+/* Name label */
+.ts-galaxy-name{
+  font-size:.62rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  color:rgba(255,255,255,.4);
+  text-align:center;
+  line-height:1.3;
+  transition:color .35s,text-shadow .35s;
+}
+.ts-galaxy-card:hover .ts-galaxy-name{
+  color:rgba(255,255,255,.9);
+  text-shadow:0 0 12px rgba(150,100,255,.2);
+}
 
 /* ── PROJECT CARDS ── */
 .project-img-inner{transition:transform .4s ease}
@@ -167,10 +495,19 @@ section{position:relative;z-index:1}
   /* About cards */
   #about .grid{grid-template-columns:1fr !important;gap:1rem}
 
-  /* Tech stack grid */
-  #techstack .grid{grid-template-columns:repeat(2,1fr) !important;gap:.75rem}
-  .ts-item{padding:1rem !important}
-  .ts-icon{width:2rem !important;height:2rem !important}
+  /* Tech stack galaxy — responsive */
+  .ts-galaxy-section{padding:50px 16px 60px !important;min-height:auto}
+  .ts-galaxy-layout{flex-direction:column;gap:32px}
+  .ts-galaxy-side{flex-wrap:wrap;justify-content:center !important;gap:10px}
+  .ts-galaxy-col{width:100px;gap:10px}
+  .ts-galaxy-center{flex:0 0 auto;padding:0 12px;order:-1}
+  .ts-galaxy-visual{max-width:300px}
+  .ts-galaxy-heading{font-size:1.4rem !important}
+  .ts-galaxy-desc{font-size:.82rem}
+  .ts-galaxy-card-inner{padding:14px 8px 10px}
+  .ts-galaxy-icon{width:34px;height:34px}
+  .ts-galaxy-name{font-size:.52rem}
+  .hero-smoke-container{height:25%}
 
   /* Service tilted cards - unstack */
   .service-tilt-card{
@@ -214,7 +551,9 @@ section{position:relative;z-index:1}
 
 @media(max-width:480px){
   .hero-name{font-size:1.75rem !important}
-  .ts-item{padding:.75rem !important}
-  .ts-label{font-size:.6rem !important}
+  .ts-galaxy-col{width:85px}
+  .ts-galaxy-card-inner{padding:10px 6px 8px !important}
+  .ts-galaxy-name{font-size:.48rem !important}
+  .ts-galaxy-icon{width:28px !important;height:28px !important}
   section{padding-left:.75rem !important;padding-right:.75rem !important}
 }

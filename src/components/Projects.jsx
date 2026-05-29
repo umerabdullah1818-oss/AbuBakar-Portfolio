@@ -77,6 +77,14 @@ const projects = {
   ],
   frontend: [
     {
+      name: "Personal Portfolio — Umer Abdullah",
+      desc: "A highly interactive, 3D-inspired developer portfolio featuring immersive GSAP animations, custom modern UI components, and a sleek dark aesthetic.",
+      tech: ["React.js", "Tailwind CSS", "GSAP", "Vite"],
+      github: "https://github.com/umerabdullah1818-oss/Portfolio",
+      live: "https://portfolio-chi-snowy-18.vercel.app/",
+      img: "/projects/portfolio-hd.png",
+    },
+    {
       name: "Reownlogics — 2D & 3D Animation Services",
       desc: "A visually stunning and responsive landing page for 2D & 3D animation services. Crafted with React, Tailwind CSS, and Framer Motion to showcase creative portfolios with engaging animations.",
       tech: ["React.js", "Tailwind CSS", "Vite", "Framer Motion"],
