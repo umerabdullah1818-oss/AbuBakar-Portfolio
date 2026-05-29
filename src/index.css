@@ -373,7 +373,7 @@ button{font-family:inherit;cursor:none}
   position:absolute;
   inset:0;
   border-radius:18px;
-  background:linear-gradient(135deg,rgba(130,60,255,.2),rgba(79,195,247,.15),rgba(170,0,255,.2),rgba(41,121,255,.15));
+  background:linear-gradient(135deg,rgba(79,195,247,.25),rgba(79,195,247,.05),rgba(79,195,247,.2),rgba(79,195,247,.05));
   background-size:300% 300%;
   animation:borderGlow 4s ease-in-out infinite;
   z-index:0;
@@ -388,7 +388,7 @@ button{font-family:inherit;cursor:none}
 .ts-galaxy-card-inner{
   position:relative;
   z-index:1;
-  background:rgba(12,8,24,.85);
+  background:rgba(8,16,24,.85);
   border:1px solid rgba(255,255,255,.06);
   border-radius:16px;
   padding:22px 14px 16px;
@@ -400,9 +400,9 @@ button{font-family:inherit;cursor:none}
   transition:border-color .4s,box-shadow .4s,background .4s;
 }
 .ts-galaxy-card:hover .ts-galaxy-card-inner{
-  border-color:rgba(150,80,255,.3);
-  box-shadow:0 8px 32px rgba(130,50,255,.12),0 0 60px rgba(79,195,247,.06);
-  background:rgba(20,12,40,.9);
+  border-color:rgba(79,195,247,.4);
+  box-shadow:0 8px 32px rgba(79,195,247,.15),0 0 60px rgba(79,195,247,.1);
+  background:rgba(12,24,36,.9);
 }
 
 /* Icon */
@@ -422,7 +422,7 @@ button{font-family:inherit;cursor:none}
 }
 .ts-galaxy-card:hover .ts-galaxy-icon{
   transform:scale(1.15) rotate(-3deg);
-  filter:drop-shadow(0 0 8px rgba(150,100,255,.3));
+  filter:drop-shadow(0 0 10px rgba(79,195,247,.4));
 }
 
 /* Name label */
@@ -438,7 +438,7 @@ button{font-family:inherit;cursor:none}
 }
 .ts-galaxy-card:hover .ts-galaxy-name{
   color:rgba(255,255,255,.9);
-  text-shadow:0 0 12px rgba(150,100,255,.2);
+  text-shadow:0 0 12px rgba(79,195,247,.5);
 }
 
 /* ── PROJECT CARDS ── */
