@@ -80,42 +80,29 @@ export default function Hero() {
       {/* ── Grid background ── */}
       <div className="grid-bg" style={{ zIndex: 10, opacity: 0.5 }} />
 
-      {/* ── Back text layer — behind person ── */}
+      {/* ── Back text layer — perfectly centered in the space above the picture ── */}
       <div
-        className="absolute inset-0 flex items-start justify-center pt-[8vh] sm:pt-[12vh] pointer-events-none select-none"
-        style={{ zIndex: 20 }}
+        className="absolute top-0 left-0 right-0 flex items-center justify-center pointer-events-none select-none px-4"
+        style={{ zIndex: 20, height: "35vh", marginTop: "80px" }}
       >
-        <div className="flex flex-col items-center">
-          {/* Eyebrow text — centered above the heading */}
-          <div ref={eyebrowRef} className="lg:self-center" style={{ opacity: 0, marginBottom: "1vw" }}>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontStyle: "italic",
-                fontSize: "clamp(1.2rem, 3.5vw, 2.5rem)",
-                fontWeight: 700,
-                letterSpacing: "0.15em",
-                color: "rgba(30,41,59,0.8)",
-                textTransform: "uppercase",
-                paddingBottom: "2%",
-                paddingTop: "2%"
-              }}
-            >
-              AI AUTOMATION ENGINEER & FULL-STACK DEVELOPER            </p>
+        <div className="flex flex-col items-center justify-center w-full">
+          {/* Eyebrow text — removed to prevent duplication */}
+          <div ref={eyebrowRef} className="lg:self-center" style={{ opacity: 0, marginBottom: "1vw", display: "none" }}>
+            <p></p>
           </div>
 
           <h1
-            className="flex flex-wrap justify-center text-center px-4"
+            className="flex flex-wrap justify-center text-center w-full"
             style={{
-              fontFamily: "'Anton', sans-serif",
-              fontSize: "clamp(1.5rem, 4vw, 4.5rem)",
-              letterSpacing: "0.03em",
-              background: "linear-gradient(135deg, #6366f1 0%, #4f46e5 30%, #14b8a6 60%, #0ea5e9 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              lineHeight: 1.1,
-              maxWidth: "90vw"
+              fontFamily: "'DM Sans', sans-serif",
+              fontStyle: "italic",
+              fontWeight: 800,
+              fontSize: "clamp(1.5rem, 4.5vw, 4rem)",
+              letterSpacing: "0.05em",
+              color: "rgba(30,41,59,0.85)",
+              textTransform: "uppercase",
+              lineHeight: 1.2,
+              maxWidth: "1000px"
             }}
           >
             {heading.split("").map((letter, i) => (
@@ -133,10 +120,10 @@ export default function Hero() {
           {/* Mobile-only motivational description */}
           <p
             ref={descRef}
-            className="sm:hidden text-center text-slate-500 text-[0.85rem] leading-relaxed max-w-[90%] mt-6 mx-auto font-medium"
+            className="sm:hidden text-center text-slate-500 text-[0.85rem] leading-relaxed max-w-[90%] mt-4 mx-auto font-medium"
             style={{ opacity: 0, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
           >
-            Delivering production-grade AI pipelines, CRM automation systems, and scalable MERN web applications. Merging AI precision with full-stack engineering.
+            Delivering production-grade AI pipelines, CRM automation systems, and scalable MERN web applications.
           </p>
         </div>
       </div>
