@@ -69,7 +69,7 @@ export default function Hero() {
       );
   }, []);
 
-  const heading = "AI AUTOMATION ENGINEER & FULL-STACK DEVELOPER";
+  const heading = "AI AUTOMATION ENGINEER &\nFULL-STACK DEVELOPER";
   return (
     <section
       id="home"
@@ -105,16 +105,21 @@ export default function Hero() {
               maxWidth: "1000px"
             }}
           >
-            {heading.split("").map((letter, i) => (
-              <span
-                key={`b${i}`}
-                ref={(el) => (backLettersRef.current[i] = el)}
-                className="inline-block"
-                style={{ opacity: 0 }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </span>
-            ))}
+            {heading.split("").map((letter, i) => {
+              if (letter === "\n") {
+                return <div key={`br-${i}`} className="w-full h-0 block md:hidden" />;
+              }
+              return (
+                <span
+                  key={`b${i}`}
+                  ref={(el) => (backLettersRef.current[i] = el)}
+                  className="inline-block"
+                  style={{ opacity: 0 }}
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </span>
+              );
+            })}
           </h1>
 
           {/* Mobile-only motivational description */}
