@@ -473,7 +473,7 @@ section{position:relative;z-index:1}
   /* Tech stack grid — responsive */
   .ts-galaxy-section{padding:50px 16px 60px !important;min-height:auto}
   .ts-grid-layout{grid-template-columns:repeat(3, 1fr) !important;gap:10px !important;padding:0 12px !important}
-  .ts-galaxy-card-inner{padding:14px 8px 10px}
+  .ts-galaxy-card-inner{padding:10px !important; aspect-ratio: 1 !important; justify-content: center !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255,255,255,0.8) !important;}
   .ts-galaxy-icon{width:34px;height:34px}
   .ts-galaxy-name{font-size:.52rem}
   .hero-smoke-container{height:25%}
@@ -521,7 +521,7 @@ section{position:relative;z-index:1}
 @media(max-width:480px){
   .hero-name{font-size:1.75rem !important}
   .ts-grid-layout{grid-template-columns:repeat(3, 1fr) !important}
-  .ts-galaxy-card-inner{padding:10px 6px 8px !important}
+  .ts-galaxy-card-inner{padding:6px !important; aspect-ratio: 1 !important; justify-content: center !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255,255,255,0.8) !important;}
   .ts-galaxy-name{font-size:.48rem !important}
   .ts-galaxy-icon{width:28px !important;height:28px !important}
   section{padding-left:.75rem !important;padding-right:.75rem !important}

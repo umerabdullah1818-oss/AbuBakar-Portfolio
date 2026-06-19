@@ -120,10 +120,10 @@ export default function Hero() {
           {/* Mobile-only motivational description */}
           <p
             ref={descRef}
-            className="sm:hidden text-center text-slate-500 text-[0.75rem] sm:text-[0.85rem] whitespace-nowrap mt-3 mx-auto font-medium"
+            className="sm:hidden text-center text-slate-500 text-[0.85rem] leading-relaxed max-w-[90%] mt-4 mx-auto font-medium"
             style={{ opacity: 0, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
           >
-            Production-grade AI & Full-Stack solutions.
+            Delivering production-grade AI pipelines, CRM automation systems, and scalable MERN web applications.
           </p>
         </div>
       </div>
