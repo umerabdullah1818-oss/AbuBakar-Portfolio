@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import avatarImg from "../assets/hero-portrait.webp";
+import avatarImg from "../assets/hero-portrait.png";
 
 
 export default function Hero() {
@@ -59,7 +59,7 @@ export default function Hero() {
         { opacity: 1, scale: 1, duration: 0.6 },
         "-=0.4"
       )
-      
+
       /* 7. Social Links */
       .fromTo(
         socialRef.current,
@@ -69,49 +69,53 @@ export default function Hero() {
       );
   }, []);
 
-  const heading = "UMER ABDULLAH";
+  const heading = "AI AUTOMATION ENGINEER & FULL-STACK DEVELOPER";
   return (
     <section
       id="home"
       ref={sectionRef}
       className="relative w-full h-screen overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #f8f9fc 0%, #eef2ff 40%, #f0f4ff 70%, #f8f9fc 100%)" }}
     >
       {/* ── Grid background ── */}
-      <div className="grid-bg" style={{ zIndex: 10, opacity: 0.8 }} />
+      <div className="grid-bg" style={{ zIndex: 10, opacity: 0.5 }} />
 
       {/* ── Back text layer — behind person ── */}
       <div
-        className="absolute inset-0 flex items-start justify-center pt-[14vh] sm:pt-[24vh] pointer-events-none select-none"
+        className="absolute inset-0 flex items-start justify-center pt-[8vh] sm:pt-[12vh] pointer-events-none select-none"
         style={{ zIndex: 20 }}
       >
-        <div className="flex flex-col items-center lg:items-start">
+        <div className="flex flex-col items-center">
           {/* Eyebrow text — centered above the heading */}
-          <div ref={eyebrowRef} className="lg:self-center" style={{ opacity: 0, marginBottom: "-1vw" }}>
+          <div ref={eyebrowRef} className="lg:self-center" style={{ opacity: 0, marginBottom: "1vw" }}>
             <p
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontStyle: "italic",
-                fontSize: "clamp(0.6rem, 2.5vw, 1.25rem)",
-                fontWeight: 500,
-                letterSpacing: "0.18em",
-                color: "rgba(255,255,255,0.65)",
+                fontSize: "clamp(1.2rem, 3.5vw, 2.5rem)",
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                color: "rgba(30,41,59,0.8)",
                 textTransform: "uppercase",
-                paddingBottom: "4%",
-                paddingTop: "5%"
+                paddingBottom: "2%",
+                paddingTop: "2%"
               }}
             >
-              Full Stack AI Developer
-            </p>
+              AI AUTOMATION ENGINEER & FULL-STACK DEVELOPER            </p>
           </div>
 
           <h1
-            className="flex whitespace-nowrap"
+            className="flex flex-wrap justify-center text-center px-4"
             style={{
               fontFamily: "'Anton', sans-serif",
-              fontSize: "clamp(3rem, 11vw, 12rem)",
-              letterSpacing: "-0.02em",
-              color: "#4fc3f7",
-              lineHeight: 0.95,
+              fontSize: "clamp(1.5rem, 4vw, 4.5rem)",
+              letterSpacing: "0.03em",
+              background: "linear-gradient(135deg, #6366f1 0%, #4f46e5 30%, #14b8a6 60%, #0ea5e9 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              lineHeight: 1.1,
+              maxWidth: "90vw"
             }}
           >
             {heading.split("").map((letter, i) => (
@@ -129,10 +133,10 @@ export default function Hero() {
           {/* Mobile-only motivational description */}
           <p
             ref={descRef}
-            className="sm:hidden text-center text-white/60 text-[0.85rem] leading-relaxed max-w-[90%] mt-6 mx-auto font-medium"
+            className="sm:hidden text-center text-slate-500 text-[0.85rem] leading-relaxed max-w-[90%] mt-6 mx-auto font-medium"
             style={{ opacity: 0, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
           >
-            Crafting intelligent, scalable digital experiences. Merging full-stack precision with cutting-edge AI to turn complex problems into elegant solutions.
+            Delivering production-grade AI pipelines, CRM automation systems, and scalable MERN web applications. Merging AI precision with full-stack engineering.
           </p>
         </div>
       </div>
@@ -144,13 +148,13 @@ export default function Hero() {
         style={{
           zIndex: 40,
           width: "clamp(340px, 85vw, 600px)",
-          height: "70%",
+          height: "65%",
           opacity: 0,
         }}
       >
         <img
           src={avatarImg}
-          alt="Umer Abdullah Shah"
+          alt="Abubakar Waseem"
           className="w-full h-full object-contain object-bottom"
           draggable="false"
           loading="eager"
@@ -161,7 +165,7 @@ export default function Hero() {
               "linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)",
             maskImage:
               "linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%)",
-            filter: "contrast(1.08) brightness(0.97)",
+            filter: "contrast(1.08) brightness(1.02)",
           }}
         />
       </div>
@@ -182,30 +186,30 @@ export default function Hero() {
         className="absolute bottom-0 left-0 right-0 h-[30%] pointer-events-none"
         style={{
           zIndex: 19,
-          background: "linear-gradient(to top, #080a0f 0%, transparent 100%)",
+          background: "linear-gradient(to top, #f8f9fc 0%, transparent 100%)",
         }}
       />
 
       {/* ── Resume Download Button ── */}
       <a
         ref={circleRef}
-        href="/resume.pdf"
-        download="Umer_Abdullah_Resume.pdf"
+        href="/Abubakar Resume (1).pdf"
+        download="Abubakar_Resume.pdf"
         className="absolute hidden sm:flex group items-center gap-4 cursor-pointer pointer-events-auto"
         style={{ zIndex: 50, bottom: "7%", right: "6%" }}
       >
         <span
-          className="text-white/80 font-sans font-medium uppercase tracking-[0.2em] text-[0.6rem] 
+          className="text-slate-500 font-sans font-medium uppercase tracking-[0.2em] text-[0.6rem] 
                      opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 
                      transition-all duration-500 ease-out whitespace-nowrap"
         >
           Click here to download resume
         </span>
 
-        <div className="relative w-14 h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-md overflow-hidden group-hover:border-[#4fc3f7]/50 group-hover:bg-[#4fc3f7]/10 transition-colors duration-500 shadow-lg">
+        <div className="relative w-14 h-14 rounded-full border border-slate-200 bg-white/80 flex items-center justify-center backdrop-blur-md overflow-hidden group-hover:border-indigo-400/50 group-hover:bg-indigo-50/50 transition-colors duration-500 shadow-lg">
           {/* Closed Envelope */}
           <svg
-            className="absolute w-6 h-6 text-white/70 transition-all duration-300 group-hover:opacity-0 group-hover:scale-75 group-hover:-translate-y-2"
+            className="absolute w-6 h-6 text-slate-400 transition-all duration-300 group-hover:opacity-0 group-hover:scale-75 group-hover:-translate-y-2"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
           >
             <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -214,7 +218,7 @@ export default function Hero() {
 
           {/* Open Envelope */}
           <svg
-            className="absolute w-6 h-6 text-[#4fc3f7] opacity-0 scale-75 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0"
+            className="absolute w-6 h-6 text-indigo-500 opacity-0 scale-75 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
           >
             <path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z" />
@@ -232,7 +236,7 @@ export default function Hero() {
         {[
           {
             name: "LinkedIn",
-            url: "https://www.linkedin.com/in/umer-abdullah-shah-423870356?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+            url: "https://www.linkedin.com/in/abubakar-gill-64832a287",
             icon: (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
@@ -240,19 +244,17 @@ export default function Hero() {
             ),
           },
           {
-            name: "Instagram",
-            url: "https://www.instagram.com/umershah1818?utm_source=qr&igsh=NWZzaHc4bGoyMDJw",
+            name: "GitHub",
+            url: "https://github.com/abubakarwaseem",
             icon: (
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
               </svg>
             ),
           },
           {
             name: "WhatsApp",
-            url: "https://wa.me/923244519323",
+            url: "https://wa.me/923214918435",
             icon: (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
@@ -262,20 +264,11 @@ export default function Hero() {
           },
           {
             name: "Email",
-            url: "mailto:umerabdullah1818@gmail.com",
+            url: "mailto:abubakargill326@gmail.com",
             icon: (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-              </svg>
-            ),
-          },
-          {
-            name: "GitHub",
-            url: "https://github.com/umerabdullah1818-oss",
-            icon: (
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
               </svg>
             ),
           },
@@ -286,7 +279,7 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             title={social.name}
-            className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-[#4fc3f7]/50 hover:bg-[#4fc3f7]/10 transition-all duration-300 transform hover:scale-110"
+            className="w-11 h-11 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:text-indigo-500 hover:border-indigo-300 hover:bg-indigo-50/60 transition-all duration-300 transform hover:scale-110 bg-white/70 backdrop-blur-sm shadow-sm"
           >
             {social.icon}
           </a>
@@ -299,7 +292,7 @@ export default function Hero() {
         style={{
           zIndex: 5,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
+            "linear-gradient(rgba(99,102,241,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.015) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />

@@ -21,7 +21,7 @@ function Particles({ count = 80 }) {
     const context = canvas.getContext("2d");
     context.beginPath();
     context.arc(32, 32, 30, 0, 2 * Math.PI);
-    context.fillStyle = "white";
+    context.fillStyle = "#6366f1";
     context.fill();
     return new THREE.CanvasTexture(canvas);
   }, []);
@@ -42,9 +42,9 @@ function Particles({ count = 80 }) {
       </bufferGeometry>
       <pointsMaterial 
         size={0.07} 
-        color="#4fc3f7" 
+        color="#6366f1" 
         transparent 
-        opacity={0.9} 
+        opacity={0.4} 
         sizeAttenuation 
         map={circleTexture}
         depthWrite={false}
@@ -56,7 +56,7 @@ function Particles({ count = 80 }) {
 function Scene() {
   return (
     <>
-      <ambientLight intensity={0.25} />
+      <ambientLight intensity={0.5} />
       <Particles count={80} />
     </>
   );
