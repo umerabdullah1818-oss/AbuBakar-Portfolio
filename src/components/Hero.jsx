@@ -97,7 +97,7 @@ export default function Hero() {
               fontFamily: "'DM Sans', sans-serif",
               fontStyle: "italic",
               fontWeight: 800,
-              fontSize: "clamp(1.5rem, 4.5vw, 4rem)",
+              fontSize: "clamp(1.2rem, 3.5vw, 3rem)",
               letterSpacing: "0.05em",
               color: "rgba(30,41,59,0.85)",
               textTransform: "uppercase",
@@ -120,10 +120,10 @@ export default function Hero() {
           {/* Mobile-only motivational description */}
           <p
             ref={descRef}
-            className="sm:hidden text-center text-slate-500 text-[0.85rem] leading-relaxed max-w-[90%] mt-4 mx-auto font-medium"
+            className="sm:hidden text-center text-slate-500 text-[0.75rem] sm:text-[0.85rem] whitespace-nowrap mt-3 mx-auto font-medium"
             style={{ opacity: 0, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
           >
-            Delivering production-grade AI pipelines, CRM automation systems, and scalable MERN web applications.
+            Production-grade AI & Full-Stack solutions.
           </p>
         </div>
       </div>
