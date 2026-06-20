@@ -8,19 +8,19 @@ const techs = [
   { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
   { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
   { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg" },
-  { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", invert: false },
+  { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", invert: true },
   { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", invert: false },
+  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", invert: true },
 
   /* AI & Automation */
-  { name: "n8n", icon: "https://cdn.simpleicons.org/n8n/000000" },
+  { name: "n8n", icon: "https://cdn.simpleicons.org/n8n/ffffff" },
   {
     name: "Vapi",
     fallbackSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="#151719"/><path d="M33 28a5 5 0 0 1 9 0l8 27 8-27a5 5 0 0 1 9 0L54 70a5 5 0 0 1-8 0Z" fill="#54DCA8"/></svg>`,
   },
   {
     name: "GHL CRM",
-    fallbackSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="#FAFAFA"/><polygon points="25,15 10,35 40,35" fill="#F0B323"/><polygon points="25,15 33,35 40,35" fill="#D4991A"/><rect x="17" y="35" width="16" height="55" fill="#F0B323"/><polygon points="50,40 35,60 65,60" fill="#2684FF"/><polygon points="50,40 58,60 65,60" fill="#1C65C7"/><rect x="42" y="60" width="16" height="30" fill="#2684FF"/><polygon points="75,10 60,30 90,30" fill="#21C45D"/><polygon points="75,10 83,30 90,30" fill="#169E48"/><rect x="67" y="30" width="16" height="60" fill="#21C45D"/></svg>`,
+    fallbackSvg: `<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="#1a1a1a"/><polygon points="25,15 10,35 40,35" fill="#F0B323"/><polygon points="25,15 33,35 40,35" fill="#D4991A"/><rect x="17" y="35" width="16" height="55" fill="#F0B323"/><polygon points="50,40 35,60 65,60" fill="#2684FF"/><polygon points="50,40 58,60 65,60" fill="#1C65C7"/><rect x="42" y="60" width="16" height="30" fill="#2684FF"/><polygon points="75,10 60,30 90,30" fill="#21C45D"/><polygon points="75,10 83,30 90,30" fill="#169E48"/><rect x="67" y="30" width="16" height="60" fill="#21C45D"/></svg>`,
   },
   {
     name: "LangChain",
@@ -35,10 +35,10 @@ const techs = [
   { name: "Selenium", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/selenium/selenium-original.svg" },
   { name: "Playwright", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg" },
   { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", invert: false },
+  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", invert: true },
   { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
   { name: "Postman", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" },
-  { name: "WordPress", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg", invert: false },
+  { name: "WordPress", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg", invert: true },
   { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
   { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
   { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
@@ -150,9 +150,9 @@ export default function TechStack() {
     >
       {/* ── TOP: Heading & Description ── */}
       <div className="text-center mb-16 relative z-10">
-        <h2 className="text-xs font-semibold tracking-[.2em] uppercase text-slate-400 mb-2 reveal">Tech Stack</h2>
-        <p className="text-[clamp(1.6rem,3vw,2.2rem)] font-display font-bold reveal reveal-delay-1 text-slate-800">
-          Technologies I <span className="text-indigo-500">work with</span>
+        <h2 className="text-xs font-semibold tracking-[.2em] uppercase text-gray-500 mb-2 reveal">Tech Stack</h2>
+        <p className="text-[clamp(1.6rem,3vw,2.2rem)] font-display font-bold reveal reveal-delay-1 text-gray-100">
+          Technologies I <span className="text-cyan-400">work with</span>
         </p>
       </div>
 

@@ -105,15 +105,15 @@ export default function Navbar() {
                    px-4 sm:px-5 py-3
                    rounded-full
                    backdrop-blur-xl
-                   shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
+                   shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
         style={{
-          background: "rgba(255,255,255,0.75)",
-          border: "1.5px solid rgba(99,102,241,0.08)",
+          background: "rgba(10,10,10,0.75)",
+          border: "1.5px solid rgba(0,240,255,0.08)",
           opacity: 0,
         }}
       >
         {/* Left — Logo */}
-        <a href="#home" className="font-cursive" style={{ cursor: "none", fontFamily: "'Dancing Script', cursive", fontSize: "1.65rem", fontWeight: 700, color: "#1e293b" }}>
+        <a href="#home" className="font-cursive" style={{ cursor: "none", fontFamily: "'Dancing Script', cursive", fontSize: "1.65rem", fontWeight: 700, color: "#E0E0E0" }}>
           AbuBakar
         </a>
 
@@ -128,14 +128,14 @@ export default function Navbar() {
                   relative px-4 py-1.5 rounded-full text-[0.72rem] font-medium tracking-wide
                   transition-all duration-300 block
                   ${active === item.label
-                    ? "text-slate-800"
-                    : "text-slate-400 hover:text-slate-600"
+                    ? "text-cyan-300"
+                    : "text-gray-500 hover:text-gray-300"
                   }
                 `}
                 style={active === item.label ? {
-                  background: "rgba(99,102,241,0.08)",
+                  background: "rgba(0,240,255,0.08)",
                   backdropFilter: "blur(8px)",
-                  boxShadow: "inset 0 1px 0 rgba(99,102,241,0.06)",
+                  boxShadow: "inset 0 1px 0 rgba(0,240,255,0.06)",
                 } : {}}
               >
                 {item.label}
@@ -150,17 +150,17 @@ export default function Navbar() {
             href="#contact"
             className="hidden sm:block px-4 py-1.5 rounded-full text-[0.7rem] font-medium tracking-wide transition-all duration-300"
             style={{
-              color: "#6366f1",
-              border: "1px solid rgba(99,102,241,0.2)",
+              color: "#00F0FF",
+              border: "1px solid rgba(0,240,255,0.2)",
               cursor: "none",
             }}
             onMouseEnter={(e) => {
-              e.target.style.background = "rgba(99,102,241,0.06)";
-              e.target.style.borderColor = "rgba(99,102,241,0.35)";
+              e.target.style.background = "rgba(0,240,255,0.06)";
+              e.target.style.borderColor = "rgba(0,240,255,0.35)";
             }}
             onMouseLeave={(e) => {
               e.target.style.background = "transparent";
-              e.target.style.borderColor = "rgba(99,102,241,0.2)";
+              e.target.style.borderColor = "rgba(0,240,255,0.2)";
             }}
           >
             Hire Me
@@ -171,8 +171,8 @@ export default function Navbar() {
             onClick={toggleMenu}
             className="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-full"
             style={{
-              background: "rgba(99,102,241,0.05)",
-              border: "1px solid rgba(99,102,241,0.1)",
+              background: "rgba(0,240,255,0.05)",
+              border: "1px solid rgba(0,240,255,0.1)",
               cursor: "none",
             }}
           >
@@ -181,7 +181,7 @@ export default function Navbar() {
                 <div
                   key={i}
                   ref={(el) => (dotRefs.current[i] = el)}
-                  className="w-[3px] h-[3px] rounded-full bg-slate-400"
+                  className="w-[3px] h-[3px] rounded-full bg-gray-400"
                 />
               ))}
             </div>
@@ -194,7 +194,7 @@ export default function Navbar() {
         ref={overlayRef}
         className="fixed inset-0 z-40 flex flex-col items-center justify-center opacity-0 pointer-events-none"
         style={{
-          background: "linear-gradient(180deg, rgba(248,249,252,0.98) 0%, rgba(238,242,255,0.99) 50%, rgba(248,249,252,0.98) 100%)",
+          background: "linear-gradient(180deg, rgba(10,10,10,0.98) 0%, rgba(13,13,18,0.99) 50%, rgba(10,10,10,0.98) 100%)",
           backdropFilter: "blur(24px)",
         }}
       >
@@ -209,8 +209,8 @@ export default function Navbar() {
                 text-2xl sm:text-3xl font-light tracking-wide
                 transition-all duration-400
                 ${active === item.label
-                  ? "text-slate-800"
-                  : "text-slate-300 hover:text-slate-600 hover:tracking-widest hover:scale-105"
+                  ? "text-cyan-300"
+                  : "text-gray-600 hover:text-gray-300 hover:tracking-widest hover:scale-105"
                 }
               `}
               style={{ opacity: 0, cursor: "none" }}
@@ -223,7 +223,7 @@ export default function Navbar() {
         {/* Bottom accent line */}
         <div
           className="absolute bottom-12 w-16 h-px"
-          style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)" }}
+          style={{ background: "linear-gradient(90deg, transparent, rgba(0,240,255,0.3), transparent)" }}
         />
       </div>
     </>

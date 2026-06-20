@@ -21,7 +21,7 @@ function Particles({ count = 80 }) {
     const context = canvas.getContext("2d");
     context.beginPath();
     context.arc(32, 32, 30, 0, 2 * Math.PI);
-    context.fillStyle = "#6366f1";
+    context.fillStyle = "#00F0FF";
     context.fill();
     return new THREE.CanvasTexture(canvas);
   }, []);
@@ -42,7 +42,7 @@ function Particles({ count = 80 }) {
       </bufferGeometry>
       <pointsMaterial 
         size={0.07} 
-        color="#6366f1" 
+        color="#00F0FF" 
         transparent 
         opacity={0.4} 
         sizeAttenuation 

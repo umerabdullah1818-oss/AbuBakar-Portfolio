@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const services = [
   {
     name: "Full-Stack Web Development",
-    color: "#6366f1",
+    color: "#00F0FF",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`,
     bullets: [
       "End-to-end MERN stack applications",
@@ -15,7 +15,7 @@ const services = [
   },
   {
     name: "AI Automation Pipelines",
-    color: "#14b8a6",
+    color: "#0055FF",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>`,
     bullets: [
       "Intelligent N8N workflow design",
@@ -27,7 +27,7 @@ const services = [
   },
   {
     name: "Voice AI & Conversational AI",
-    color: "#f43f5e",
+    color: "#7F00FF",
     featured: true,
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`,
     bullets: [
@@ -40,7 +40,7 @@ const services = [
   },
   {
     name: "React.js UI Development",
-    color: "#0ea5e9",
+    color: "#00F0FF",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="4" rx="1"/><rect x="14" y="10" width="7" height="11" rx="1"/><rect x="3" y="13" width="7" height="8" rx="1"/></svg>`,
     bullets: [
       "Pixel-perfect responsive interfaces",
@@ -52,7 +52,7 @@ const services = [
   },
   {
     name: "GoHighLevel CRM & SEO",
-    color: "#f59e0b",
+    color: "#0055FF",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M3 20h18"/></svg>`,
     bullets: [
       "Full GHL CRM setup & config",
@@ -90,12 +90,12 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="relative px-4 md:px-6 py-24 overflow-hidden" style={{ background: "rgba(248,249,252,0.92)" }}>
-      <h2 className="text-center text-xs font-semibold tracking-[.2em] uppercase text-slate-400 mb-2 reveal">
+    <section id="services" className="relative px-4 md:px-6 py-24 overflow-hidden" style={{ background: "rgba(10,10,10,0.92)" }}>
+      <h2 className="text-center text-xs font-semibold tracking-[.2em] uppercase text-gray-500 mb-2 reveal">
         What I do
       </h2>
-      <p className="text-center text-[clamp(1.6rem,3vw,2.2rem)] font-display font-bold mb-14 md:mb-20 reveal reveal-delay-1 text-slate-800">
-        My <span className="text-indigo-500">Services</span>
+      <p className="text-center text-[clamp(1.6rem,3vw,2.2rem)] font-display font-bold mb-14 md:mb-20 reveal reveal-delay-1 text-gray-100">
+        My <span className="text-cyan-400">Services</span>
       </p>
 
       <div
@@ -120,9 +120,9 @@ export default function Services() {
                 className="group relative rounded-2xl p-7 backdrop-blur-md service-card-inner"
                 style={{
                   width: 230,
-                  background: "rgba(255,255,255,0.95)",
+                  background: "rgba(17,17,17,0.95)",
                   border: `1.5px solid ${s.color}25`,
-                  boxShadow: "0 12px 40px rgba(0,0,0,.06)",
+                  boxShadow: "0 12px 40px rgba(0,0,0,.2)",
                 }}
               >
                 {/* Icon */}
@@ -134,7 +134,7 @@ export default function Services() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[0.95rem] font-bold text-slate-800 leading-snug mb-1">
+                <h3 className="text-[0.95rem] font-bold text-gray-100 leading-snug mb-1">
                   {s.name}
                 </h3>
 
@@ -146,7 +146,7 @@ export default function Services() {
                   {s.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <CheckIcon color={s.color} />
-                      <span className="text-[0.8rem] text-slate-500 leading-snug">{b}</span>
+                      <span className="text-[0.8rem] text-gray-400 leading-snug">{b}</span>
                     </li>
                   ))}
                 </ul>
